@@ -4,7 +4,7 @@ import Layout from './Layout'
 import Home from './pages/Home'
 import Clothes from './pages/Clothes'
 import Electronics from './pages/Electronics'
-
+import ProductDetail from './pages/ProductDetails'
 
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
         <Route path='/' element={<Layout/>} >
           <Route index element={<Home/>} />
           <Route path='/clothes' element={<Clothes/>} />
+          <Route path='/product-detail/:product_id' element={<ProductDetail/>} />
           <Route path='/electronics' element={<Electronics/>} />
         </Route>
       </Routes>

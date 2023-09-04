@@ -2,7 +2,7 @@ import {NavLink} from "react-router-dom"
 function ProductImage(props){
     return(
         <div className='col-md-2 my-2 '>
-            <NavLink to={'/electronics'} className="nav-item">
+            <NavLink to={`/product-detail/${props.product.id}`} className="nav-item">
                 <div className="shadow rounded pt-2" style={{height:"380px"}}>
                     <img src={props.product.image} 
                     style={{height:"230px"}}
