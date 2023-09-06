@@ -4,6 +4,7 @@ import Layout from './Layout'
 import Home from './pages/Home'
 import Clothes from './pages/Clothes'
 import Electronics from './pages/Electronics'
+import Cart from './pages/Cart'
 import ProductDetail from './pages/ProductDetails'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path='/clothes' element={<Clothes/>} />
           <Route path='/product-detail/:product_id' element={<ProductDetail/>} />
           <Route path='/electronics' element={<Electronics/>} />
+          <Route path='/cart' element={<Cart/>} />
         </Route>
       </Routes>
     </BrowserRouter>

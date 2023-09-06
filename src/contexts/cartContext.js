@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useReducer} from "react"
+import cartReducer from "../reducers/cartReducer"
 let CartContext = createContext()
 
 let initialState = {
@@ -6,15 +7,14 @@ let initialState = {
     totalPrice: 0
 }
 
-
-let CartProvider = (children) => {
+let CartProvider = ({children}) => {
     let [state, dispatch] = useReducer(cartReducer, initialState)
 
     let addToCart = (product) => {
         dispatch({type: 'ADD', payload:product})
     }
-    let removeFromCart = (product) => {
-        dispatch({type: 'REMOVE', payload:product})
+    let removeFromCart = (id) => {
+        dispatch({type: 'REMOVE', payload:id})
     }
     let calcProduct = () => {
         dispatch({type: 'CALCULATE'})
@@ -23,13 +23,13 @@ let CartProvider = (children) => {
     useEffect(calcProduct, [state.cart]);
 
     return(
-        <CartContext.Provider value={{...state, addToCart, removeFromCart}}>
-            {children}
+        <CartContext.Provider value={{ ...state, addToCart, removeFromCart }}>
+        {children}
         </CartContext.Provider>);
     }
 
-let UseCartContext = () => useContext(CartContext)
-
-
+const UseCartContext = () => {
+    return useContext(CartContext)
+  }
 
 export { CartProvider, UseCartContext}

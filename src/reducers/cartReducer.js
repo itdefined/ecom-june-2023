@@ -1,39 +1,39 @@
 
 let cartReducer = (state, action) => {
+    console.log(state)
     switch (action.type){
         case 'ADD': 
             {
                 let product = action.payload
                 return {
-                    ...state,
-                    cart: [...state.cart, product]
+                    ...state, cart: [...state.cart, product]
                 }
             }
         case 'REMOVE': 
                 {
-                    let updatedCart = state.cart.filter(el => el.product.id !== action.payload.id)
+                        let  updatedCart = state.cart.filter(el => 
+                            el.product && el.product.id !== action.payload
+                        )
                     return {
-                        ...state,
-                        cart: [updatedCart]
+                        ...state, cart: [...updatedCart]
                     }
                 }
         case 'CALCULATE': 
                 {
-                    let total_price = state.cart.reduce(
+                    let {total_price} = state.cart.reduce(
                         (total, el) =>  {
-                            return total.price += el.price
+                            total.total_price += el.price
+                            return total
                         }, {total_price:0})
                     return {
-                            ...state,
-                            totalPrice:total_price
-                        }
+                            ...state, total_price
+                          }
             
                 }
+        default:
+                return state
     }
-
-
-
-
-
-
 }
+
+
+export default cartReducer;
