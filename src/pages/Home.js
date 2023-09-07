@@ -17,7 +17,7 @@ function Home() {
         <div className='container-fluid m-0 p-0'>
             <Carousel/>
             <div className='row my-2 p-2 mx-0'>
-                {images.map(el => <ProductImage product={el}/>)}                    
+                {images.map(el => <ProductImage key={el.id} product={el}/>)}                    
             </div>
         </div>
     );

@@ -1,6 +1,5 @@
 
 let cartReducer = (state, action) => {
-    console.log(state)
     switch (action.type){
         case 'ADD': 
             {
@@ -10,12 +9,11 @@ let cartReducer = (state, action) => {
                 }
             }
         case 'REMOVE': 
-                {
-                        let  updatedCart = state.cart.filter(el => 
-                            el.product && el.product.id !== action.payload
-                        )
+                {  let  updatedCart = state.cart.filter(el => 
+                            el && el.id !== action.payload)
                     return {
-                        ...state, cart: [...updatedCart]
+                        ...state, 
+                        cart: [...updatedCart]
                     }
                 }
         case 'CALCULATE': 
